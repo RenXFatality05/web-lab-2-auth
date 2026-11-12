@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="uk">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Вхід і реєстрація — Лабораторна №2</title>
+  <link rel="stylesheet" href="/style.css">
+  <script defer src="/auth.js"></script>
+</head>
+<body>
+  <main>
+    <header>
+      <h1>Вхід і реєстрація</h1>
+    </header>
+    <p id="notice" role="status" hidden></p>
+
+    <div id="guest">
+      <section>
+        <h2>Увійти</h2>
+        <form id="login">
+          <label for="login-name">Логін</label>
+          <input id="login-name" name="username" autocomplete="username" required>
+          <label for="login-password">Пароль</label>
+          <input id="login-password" name="password" type="password" autocomplete="current-password" required>
+          <button>Увійти</button>
+        </form>
+      </section>
+
+      <section>
+        <h2>Створити обліковий запис</h2>
+        <form id="register">
+          <label for="register-name">Логін</label>
+          <input id="register-name" name="username" autocomplete="username" pattern="[A-Za-z0-9_]{3,24}" aria-describedby="register-hint" required>
+          <label for="register-password">Пароль</label>
+          <input id="register-password" name="password" type="password" autocomplete="new-password" minlength="8" maxlength="128" aria-describedby="register-hint" required>
+          <p id="register-hint">Логін — 3–24 латинські літери, цифри або _. Пароль — 8–128 символів.</p>
+          <button>Зареєструватися</button>
+        </form>
+      </section>
+    </div>
+
+    <section id="profile" hidden>
+      <h2>Профіль</h2>
+      <dl>
+        <dt>Логін</dt><dd id="profile-name"></dd>
+        <dt>Роль</dt><dd id="profile-role"></dd>
+        <dt>Студент</dt><dd id="profile-student"></dd>
+        <dt>Група</dt><dd id="profile-group"></dd>
+        <dt>Варіант</dt><dd id="profile-variant"></dd>
+        <dt>Токен дійсний ще</dt><dd id="profile-expiry"></dd>
+      </dl>
+      <div class="actions">
+        <button id="load-users" hidden>Переглянути користувачів</button>
+        <button id="logout" class="secondary">Вийти</button>
+      </div>
+
+      <div id="users" hidden>
+        <h3>Користувачі</h3>
+        <table>
+          <thead><tr><th scope="col">ID</th><th scope="col">Логін</th><th scope="col">Роль</th></tr></thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
